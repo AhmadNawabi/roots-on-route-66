@@ -42,55 +42,51 @@ The goal of the MVP is to:
 
 ---
 ### Main Project Structure
-.
-├── README.md
-├── backend
-│   ├── Dockerfile
-│   ├── README.md
-│   ├── app
-│   │   ├── config
-│   │   │   └── database.py
-│   │   ├── main.py
-│   │   ├── models
-│   │   │   ├── log_model.py
-│   │   │   ├── plant_model.py
-│   │   │   └── user_model.py
-│   │   ├── routes
-│   │   │   ├── log_routes.py
-│   │   │   ├── plant_routes.py
-│   │   │   ├── qr_routes.py
-│   │   │   └── user_routes.py
-│   │   ├── schemas
-│   │   │   ├── log_schema.py
-│   │   │   ├── plant_schema.py
-│   │   │   └── user_schema.py
-│   │   ├── services
-│   │   │   ├── log_service.py
-│   │   │   ├── plant_service.py
-│   │   │   ├── qr_service.py
-│   │   │   └── user_service.py
-│   │   └── utils
-│   │       └── cloudinary.py
-│   └── requirements.txt
-└── frontend
-    ├── README.md
-    ├── package.json
-    └── src
-        ├── app
-        │   ├── page.tsx
-        │   ├── plant
-        │   │   └── [id]
-        │   │       └── page.tsx
-        │   ├── qr
-        │   │   └── [code]
-        │   │       └── page.tsx
-        │   └── register
-        │       └── page.tsx
-        ├── components
-        │   ├── PlantView.tsx
-        │   ├── QRInfo.tsx
-        │   └── RegisterForm.tsx
-        └── lib
-            └── api.ts
-
-19 directories, 31 files
+roots-on-route-66/
+├── backend/
+│   ├── app/
+│   │   ├── main.py
+│   │   ├── config/
+│   │   │   └── database.py
+│   │   ├── models/
+│   │   │   ├── user_model.py
+│   │   │   ├── plant_model.py
+│   │   │   └── log_model.py
+│   │   ├── schemas/
+│   │   │   ├── user_schema.py
+│   │   │   ├── plant_schema.py
+│   │   │   └── log_schema.py
+│   │   ├── routes/
+│   │   │   ├── user_routes.py
+│   │   │   ├── plant_routes.py
+│   │   │   ├── qr_routes.py
+│   │   │   └── log_routes.py
+│   │   ├── services/
+│   │   │   ├── user_service.py
+│   │   │   ├── plant_service.py
+│   │   │   ├── qr_service.py
+│   │   │   └── log_service.py
+│   │   └── utils/
+│   │       └── cloudinary.py
+│   ├── requirements.txt
+│   ├── Dockerfile
+│   └── README.md
+│
+├── frontend/
+│   ├── src/
+│   │   ├── app/
+│   │   │   ├── page.tsx
+│   │   │   ├── qr/[code]/page.tsx
+│   │   │   ├── register/page.tsx
+│   │   │   └── plant/[id]/page.tsx
+│   │   ├── components/
+│   │   │   ├── RegisterForm.tsx
+│   │   │   ├── PlantView.tsx
+│   │   │   └── QRInfo.tsx
+│   │   └── lib/
+│   │       └── api.ts
+│   ├── package.json
+│   └── README.md
+│
+├── .gitignore
+└── README.md
