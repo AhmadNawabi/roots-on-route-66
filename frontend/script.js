@@ -335,12 +335,10 @@ function trackQRScan() {
 }
 
 // ========== Search ==========
-const debouncedSearch = debounce(() => {
-    renderApp();
+const debouncedSearch = debounce(async () => {
+    await renderApp();
     isSearchComplete = true;
-}, 450, () => {
-    console.log('Search complete, results updated');
-});
+}, 450);
 
 async function generateSuggestions() {
     if (searchTerm.length < 2) {
@@ -1567,9 +1565,9 @@ window.handleSearchInput = () => {
     debouncedSearch();
 };
 
-debouncedSearch.flush = function () {
+debouncedSearch.flush = async function () {
     clearTimeout(debounceTimer);
-    renderApp();
+    await renderApp();
     isSearchComplete = true;
 };
 
