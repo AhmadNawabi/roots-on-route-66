@@ -21,6 +21,3 @@ async def startup_event():
     # Create unique indexes in MongoDB
     await create_indexes()
 
-@app.get("/")
-def root():
-    return {"message": "Potato Planting Pirates API 🏴‍☠️"}

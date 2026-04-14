@@ -705,6 +705,7 @@
             background: linear-gradient(135deg, transparent, rgba(245, 158, 11, 0.08), transparent);
             opacity: 0;
             transition: opacity var(--transition-fast);
+            pointer-events: none; /* add this */
         }
         
         .user-info:hover {

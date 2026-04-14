@@ -146,6 +146,8 @@ function logout() {
     renderApp();
 }
 
+window.logout = logout;
+
 // ========== Plant Management ==========
 async function createPlant(varietyId, parentId = null) {
     const variety = SWEET_POTATO_VARIETIES.find(v => v.id === varietyId);
@@ -335,10 +337,26 @@ function trackQRScan() {
 }
 
 // ========== Search ==========
-const debouncedSearch = debounce(async () => {
-    await renderApp();
-    isSearchComplete = true;
-}, 450);
+let searchDebounceTimer = null;
+
+function debouncedSearch() {
+    clearTimeout(searchDebounceTimer);
+    searchDebounceTimer = setTimeout(async () => {
+        const input = document.getElementById('searchInput');
+        const value = input?.value;
+        const cursorPos = input?.selectionStart;
+
+        await renderApp();
+
+        const newInput = document.getElementById('searchInput');
+        if (newInput) {
+            newInput.value = value;
+            newInput.focus();
+            newInput.setSelectionRange(cursorPos, cursorPos);
+        }
+        isSearchComplete = true;
+    }, 800);
+}
 
 async function generateSuggestions() {
     if (searchTerm.length < 2) {
@@ -1565,8 +1583,8 @@ window.handleSearchInput = () => {
     debouncedSearch();
 };
 
-debouncedSearch.flush = async function () {
-    clearTimeout(debounceTimer);
+debouncedSearch.flush = async function() {
+    clearTimeout(searchDebounceTimer);
     await renderApp();
     isSearchComplete = true;
 };
